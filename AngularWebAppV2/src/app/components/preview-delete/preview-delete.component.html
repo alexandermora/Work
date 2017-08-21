@@ -1,0 +1,72 @@
+<div class="col-sm-6 col-md-6 col-lg-6">
+    <img [src]="urlImage" alt="preview" class="img-rounded importantImg">
+</div>
+<div class="col-sm-6 col-md-6 col-lg-6">
+    <div class="alert center">
+        {{messageDelete}}
+    </div>
+    <form name="form" #f="ngForm" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="typePayment">Type of Payment: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="typePayment" [(ngModel)]="methodPayDelete.TypePayment" #methodPayDelete.TypePayment="ngModel" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="namePay">Name: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="namePay" [(ngModel)]="methodPayDelete.PaymentValue.Name" #methodPayDelete.PaymentValue.Name="ngModel" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="descriptionPay">Description: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="descriptionPay" [(ngModel)]="methodPayDelete.PaymentValue.Description" #methodPayDelete.PaymentValue.Description="ngModel" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="typeCatalogPay">Type of catalog: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="typeCatalogPay" [(ngModel)]="methodPayDelete.PaymentValue.TypeCatalogue" #methodPayDelete.PaymentValue.TypeCatalogue="ngModel" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="valuePay">Value: </label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" name="valuePay" [(ngModel)]="methodPayDelete.PaymentValue.ValuePay" #methodPayDelete.PaymentValue.ValuePay="ngModel" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="currencyPay">Type of currency: </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="currencyPay" [(ngModel)]="methodPayDelete.PaymentValue.Currency" #methodPayDelete.PaymentValue.Currency="ngModel" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="datePay">Date: </label>
+            <div class="col-sm-10">
+                <input class="form-control" name="datePay" [(ngModel)]="methodPayDelete.PaymentValue.DatePay" #methodPayDelete.PaymentValue.DatePay="ngModel" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="timezonePay">Timezone: </label>
+            <div class="col-sm-10">
+                <input class="form-control" name="timezonePay" [(ngModel)]="methodPayDelete.PaymentValue.Timezone" #methodPayDelete.PaymentValue.Timezone="ngModel" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-4">
+              <button [disabled]="loading" class="btn btn-danger" (click)="deletePayment()">Yes</button>
+              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+              />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-4">
+              <button [disabled]="loading" class="btn btn-primary" (click)="returnList()">No</button>
+              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+              />
+          </div>
+        </div>
+    </form>
+</div>

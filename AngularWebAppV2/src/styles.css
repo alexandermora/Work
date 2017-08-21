@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+
+img.importantImg
+{
+    height: 100%;
+    width: 100%;
+}
+.center
+{
+    text-align: center;
+}
+
+img.previewImg
+{
+    height: 40%;
+    width: 40%;
+}

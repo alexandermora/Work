@@ -1,0 +1,110 @@
+<div class="row">
+    <div id="searchDiv" class="jumbotron">
+        <form action="" name="form" (ngSubmit)="searchData()" #f="ngForm" novalidate class="form-horizontal">
+            <div class="form-group" >
+                <label class="control-label col-sm-2" for="typeP">Type of Payment: </label>
+                <div class="col-sm-10">
+                    <select name="typeP" id="typeP" [(ngModel)]="selectedTypeOfPayment" class="form-control">
+                        <option *ngFor="let tp of typeOfPayment.listDto" value="{{tp.name}}">{{tp.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" >
+                <label class="control-label col-sm-2" for="datePick">Date: </label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name="dateUser" [(ngModel)]="dateUser" required />
+                    <!-- <ng2-datepicker [options]="options" [(ngModel)]="date" id="datePick" name="datePick" [ngModelOptions]="{standalone: true}"></ng2-datepicker> -->
+                </div>
+            </div>
+            <div class="form-group col-sm-12 col-lg-12">
+                <div class="center">
+                    <button [disabled]="loading" class="btn btn-primary">Send</button>
+                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                    />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="!isEmpty">
+        <div class="center">
+            <button (click)="getChart()">Chart</button>
+        </div>
+        <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Type of catalogue
+                    </th>
+                    <th>
+                        Value
+                    </th>
+                    <th>
+                        Currency
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Timezone
+                    </th>
+                    <th>
+                        Support
+                    </th>
+                    <th>
+                        
+                        Update
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let payment of listPaymentSelected">
+                    <td>
+                        {{ payment.paymentValue.id }}
+                    </td>
+                    <td>
+                        {{ payment.paymentValue.name }}
+                    </td>
+                    <td>
+                        {{ payment.paymentValue.description }}
+                    </td>
+                    <td>
+                        {{ payment.paymentValue.typeCatalogue }}
+                    </td>
+                    <td>
+                        {{ payment.paymentValue.valuePay }}
+                    </td>
+                    <td>
+                        {{ payment.paymentValue.currency }}
+                    </td>
+                    <td>
+                        {{ payment.paymentValue.datePay }}
+                    </td>
+                    <td>
+                        {{ payment.paymentValue.timezone }}
+                    </td>
+                    <td>
+                        <img [src]=getPreview(payment.paymentValue.support) alt="preview" class="img-thumbnail previewImgList">
+                    </td>
+                    <td>
+                        <button (click)="updatePayment(payment)" class="btn btn-primary">Update</button>
+                    </td>
+                    <td>
+                        <button (click)="deletePayment(payment)" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
